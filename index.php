@@ -120,7 +120,7 @@
             <div class="feature-container">
               <?php
                 include_once("Connection.php");
-                $result = pg_query($conn, "SELECT * FROM product");
+                $result = pg_query($conn, "SELECT FROM * public.account");
                 if (!$result)
                 {
                   die('Invalid query: ' . pg_error($conn));
