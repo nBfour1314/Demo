@@ -118,80 +118,64 @@
         <section class="feature">
           <div class="container">
             <div class="feature-container">
-            <?php
+              <?php
                 include_once("Connection.php");
                 $result = pg_query($conn, "SELECT * FROM product");
                 if (!$result)
                 {
-                    die('Invalid query: ' . pg_error($conn));
+                  die('Invalid query: ' . pg_error($conn));
                 }
 
                 while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC))
                 {
-            ?>
+              ?>
                 <div class="feature-image">
-                    <img src="./images/feature-image.png" alt="" />
+                  <img src="./images/feature-image.png" alt="" />
                 </div>
                 
-                <div class="feature-content">                 
-                                    <h3 class="card-title"><?php echo  $row['Pro_name']?></h3>
-                                    <p class="card-text"></p>
-                                </div>
-
-                                <div class="single-product">
-                                    <div class="product-f-image">
-                                        <div class="product-hover">
-                                            <a href="?page=cart" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                            <a href="?page=single-product" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-
                 <div class="feature-content">
-                <h2 class="heading">Information</h2>
+                  <h2 class="heading">Information</h2>
 
-                <ul class="feature-list">
-                  <li class="feature-item">
-                    <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
-                    <span><?php echo "Full name:" . " " . $row['fullname']?></span>
-                  </li>
+                  <ul class="feature-list">
+                    <li class="feature-item">
+                      <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
+                      <span><?php echo "Full name:" . " " . $row['fullname']?></span>
+                    </li>
 
-                  <li class="feature-item">
-                    <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
-                    <span><?php echo "Date of Birth:" . " " . $row['dateofbirth']?></span>
-                  </li>
+                    <li class="feature-item">
+                      <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
+                      <span><?php echo "Date of Birth:" . " " . $row['dateofbirth']?></span>
+                    </li>
 
-                  <li class="feature-item">
-                    <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
-                    <span><?php echo "Gender:" . " " . $row['gender']?></span>
-                  </li>
+                    <li class="feature-item">
+                      <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
+                      <span><?php echo "Gender:" . " " . $row['gender']?></span>
+                    </li>
 
-                  <li class="feature-item">
-                    <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
-                    <span><?php echo "Major:" . " " . $row['major']?></span>
-                  </li>
+                    <li class="feature-item">
+                      <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
+                      <span><?php echo "Major:" . " " . $row['major']?></span>
+                    </li>
 
-                  <li class="feature-item">
-                    <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
-                    <span><?php echo "Location address:" . " " . $row['address']?></span>
-                  </li>
+                    <li class="feature-item">
+                      <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
+                      <span><?php echo "Location address:" . " " . $row['address']?></span>
+                    </li>
 
-                  <li class="feature-item">
-                    <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
-                    <span><?php echo "Phone Number:" . " " . $row['telephone']?></span>
-                  </li>
+                    <li class="feature-item">
+                      <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
+                      <span><?php echo "Phone Number:" . " " . $row['telephone']?></span>
+                    </li>
 
-                  <li class="feature-item">
-                    <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
-                    <span><?php echo "Email:" . " " . $row['email']?></span>
-                  </li>
-                </ul>
-              </div>
-
-            <?php
+                    <li class="feature-item">
+                      <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
+                      <span><?php echo "Email:" . " " . $row['email']?></span>
+                    </li>
+                  </ul>
+                </div>
+              <?php
                 }
-            ?>
+              ?>
             </div>
           </div>
         </section>
