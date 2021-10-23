@@ -120,13 +120,10 @@
             <div class="feature-container">
               <?php
                 include_once("Connection.php");
-                $result = pg_query($conn, "SELECT FROM * public.account");
-                if (!$result)
-                {
-                  die('Invalid query: ' . pg_error($conn));
-                }
+                $sql = pg_query($conn, "SELECT FROM * public.account");
 
-                while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC))
+                if(pg_num_rows($sql)>0){
+                while ($result = pg_fetch_assoc($sql))
                 {
               ?>
                 <div class="feature-image">
@@ -139,37 +136,37 @@
                   <ul class="feature-list">
                     <li class="feature-item">
                       <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
-                      <span><?php echo "Full name:" . " " . $row['fullname']?></span>
+                      <span><?php echo "Full name:" . " " . $result['fullname'];?></span>
                     </li>
 
                     <li class="feature-item">
                       <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
-                      <span><?php echo "Date of Birth:" . " " . $row['dateofbirth']?></span>
+                      <span><?php echo "Date of Birth:" . " " . $result['dateofbirth'];?></span>
                     </li>
 
                     <li class="feature-item">
                       <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
-                      <span><?php echo "Gender:" . " " . $row['gender']?></span>
+                      <span><?php echo "Gender:" . " " . $result['gender'];?></span>
                     </li>
 
                     <li class="feature-item">
                       <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
-                      <span><?php echo "Major:" . " " . $row['major']?></span>
+                      <span><?php echo "Major:" . " " . $result['major'];?></span>
                     </li>
 
                     <li class="feature-item">
                       <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
-                      <span><?php echo "Location address:" . " " . $row['address']?></span>
+                      <span><?php echo "Location address:" . " " . $result['address'];?></span>
                     </li>
 
                     <li class="feature-item">
                       <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
-                      <span><?php echo "Phone Number:" . " " . $row['telephone']?></span>
+                      <span><?php echo "Phone Number:" . " " . $result['telephone'];?></span>
                     </li>
 
                     <li class="feature-item">
                       <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
-                      <span><?php echo "Email:" . " " . $row['email']?></span>
+                      <span><?php echo "Email:" . " " . $result['email'];?></span>
                     </li>
                   </ul>
                 </div>
