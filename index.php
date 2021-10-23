@@ -8,8 +8,7 @@
     <link
     rel="stylesheet"
     type="text/css"
-    href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
-  />
+    href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,6 +17,10 @@
     />
     <link rel="stylesheet" href="./css/app.css" />
   </head>
+<?php
+    session_start();
+    include_once("Connection.php");
+?>
   <body>
     
     <div class="wrapper">
@@ -115,50 +118,80 @@
         <section class="feature">
           <div class="container">
             <div class="feature-container">
-              <div class="feature-image">
-                <img src="./images/feature-image.png" alt="" />
-              </div>
-              <div class="feature-content">
-                <h2 class="heading">We Provide Many Features You Can Use</h2>
-                <p class="text feature-desc">
-                  You can explore the features that we provide with fun and have
-                  their own functions each feature.
-                </p>
+            <?php
+                include_once("Connection.php");
+                $result = pg_query($conn, "SELECT * FROM product");
+                if (!$result)
+                {
+                    die('Invalid query: ' . pg_error($conn));
+                }
+
+                while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC))
+                {
+            ?>
+                <div class="feature-image">
+                    <img src="./images/feature-image.png" alt="" />
+                </div>
+                
+                <div class="feature-content">                 
+                                    <h3 class="card-title"><?php echo  $row['Pro_name']?></h3>
+                                    <p class="card-text"></p>
+                                </div>
+
+                                <div class="single-product">
+                                    <div class="product-f-image">
+                                        <div class="product-hover">
+                                            <a href="?page=cart" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                            <a href="?page=single-product" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+
+                <div class="feature-content">
+                <h2 class="heading">Information</h2>
+
                 <ul class="feature-list">
                   <li class="feature-item">
-                    <img
-                      src="./images/icon-check.svg"
-                      alt=""
-                      class="feature-icon"
-                    />
-                    <span>Powerfull online protection.</span>
+                    <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
+                    <span><?php echo "Full name:" . " " . $row['fullname']?></span>
                   </li>
+
                   <li class="feature-item">
-                    <img
-                      src="./images/icon-check.svg"
-                      alt=""
-                      class="feature-icon"
-                    />
-                    <span>Internet without borders.</span>
+                    <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
+                    <span><?php echo "Date of Birth:" . " " . $row['dateofbirth']?></span>
                   </li>
+
                   <li class="feature-item">
-                    <img
-                      src="./images/icon-check.svg"
-                      alt=""
-                      class="feature-icon"
-                    />
-                    <span>Supercharged VPN</span>
+                    <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
+                    <span><?php echo "Gender:" . " " . $row['gender']?></span>
                   </li>
+
                   <li class="feature-item">
-                    <img
-                      src="./images/icon-check.svg"
-                      alt=""
-                      class="feature-icon"
-                    />
-                    <span>No specific time limits.</span>
+                    <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
+                    <span><?php echo "Major:" . " " . $row['major']?></span>
+                  </li>
+
+                  <li class="feature-item">
+                    <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
+                    <span><?php echo "Location address:" . " " . $row['address']?></span>
+                  </li>
+
+                  <li class="feature-item">
+                    <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
+                    <span><?php echo "Phone Number:" . " " . $row['telephone']?></span>
+                  </li>
+
+                  <li class="feature-item">
+                    <img src="./images/icon-check.svg" alt="" class="feature-icon"/>
+                    <span><?php echo "Email:" . " " . $row['email']?></span>
                   </li>
                 </ul>
               </div>
+
+            <?php
+                }
+            ?>
             </div>
           </div>
         </section>
