@@ -131,7 +131,7 @@
                 </div>
                 
                 <div class="feature-content">
-                  <h2 class="heading">Information</h2>
+                  <h2 class="heading"><?php echo "Information :" . " " . $result['id'];?></h2>
 
                   <ul class="feature-list">
                     <li class="feature-item">
